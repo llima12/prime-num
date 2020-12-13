@@ -125,14 +125,14 @@ if prop_response == "yes":
 
     try:
         factor /= prime_factor
-    except (TypeError, ZeroDivisionError) as error:
+    except (TypeError) as error:
         factor = "undefined"
 
-    if input_num == 10:
+    if input_num < 10:
         # Numbers 1-9 only have only one digit and are an exception to the following calculations
         sum_digits = input_num
     # 100 is conveniently, the only three-digit number in this set
-    elif input_num != range(1, 99):
+    elif input_num == 100:
         sum_digits = 1
     else:
         # The digits of a two-digit number can be found by using floor division and the modulus operators like so
@@ -155,10 +155,10 @@ if prop_response == "yes":
         # The * operator is used for multiplying two numbers
         prod_digits = (input_num // 10) * (input_num % 10)
 
-    if input_num == 1:
-        print("The factor left from the quotient of your number and its least prime factor is: undefined")
-    else:
+    if input_num != 1:
         print("The factor left from the quotient of your number and its least prime factor is: " + str(factor))
+    else:
+        print("The factor left from the quotient of your number and its least prime factor is: undefined")
 
     print("The sum of the digits of your number is: " + str(sum_digits))
     print("The different of the digits of your number is: " + str(diff_digits))
