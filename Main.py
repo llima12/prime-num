@@ -125,7 +125,7 @@ if prop_response == "yes":
 
     try:
         factor /= prime_factor
-    except (TypeError) as error:
+    except TypeError:
         factor = "undefined"
 
     if input_num < 10:
