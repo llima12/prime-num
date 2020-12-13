@@ -76,7 +76,7 @@ while good_response is False:
         response = str(input("Would you like to know the smallest prime factor of your number? Enter yes or no: "))
         if response == "yes":
             good_response = True
-        if response == "no":
+        elif response == "no":
             good_response = True
         else:
             good_response = False
@@ -101,11 +101,7 @@ if response == "yes":
         # 1 has no prime factors
         elif input_num == 1:
             prime_factor = "undefined"
-
-        if input_num == 1:
-            print("The smallest prime factor of your number is: " + "undefined")
-        else:
-            print("Tne smallest prime factor of your number is: " + str(prime_factor))
+        print("Tne smallest prime factor of your number is: " + str(prime_factor))
 
 good_prop_response = False
 while good_prop_response is False:
@@ -126,10 +122,11 @@ if prop_response == "yes":
     factor = input_num
     # Shortcut operators can be used to simplify the process of assigning a new value to an existing variable
     # This is done by applying an arithmetic operator on it such as / in this case
-    if input_num == 1:
-        pass
-    else:
+
+    try:
         factor /= prime_factor
+    except (TypeError, ZeroDivisionError) as error:
+        factor = "undefined"
 
     if input_num == 10:
         # Numbers 1-9 only have only one digit and are an exception to the following calculations
@@ -158,7 +155,11 @@ if prop_response == "yes":
         # The * operator is used for multiplying two numbers
         prod_digits = (input_num // 10) * (input_num % 10)
 
-    print("The factor left from the quotient of your number and its least prime factor is: " + str(factor))
+    if input_num == 1:
+        print("The factor left from the quotient of your number and its least prime factor is: undefined")
+    else:
+        print("The factor left from the quotient of your number and its least prime factor is: " + str(factor))
+
     print("The sum of the digits of your number is: " + str(sum_digits))
     print("The different of the digits of your number is: " + str(diff_digits))
     print("The product of the digits of your number is: " + str(prod_digits))
